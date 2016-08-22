@@ -15,12 +15,17 @@ func main() {
 	if apiKey == "" {
 		log.Fatalln("please export BHT_APIKEY={your api key}")
 	}
-	
+
 	thesaurus := &thesaurus.BigHuge{APIKey: apiKey}
 	s := bufio.NewScanner(os.Stdin)
 
 	for s.Scan() {
 		word := s.Text()
+
+		if word == "" {
+			continue
+		}
+
 		syns, err := thesaurus.Synonyms(word)
 		if err != nil {
 			log.Fatalf("bighuge: %qの類語検索に失敗しました: %v", word, err)
