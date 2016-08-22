@@ -12,6 +12,10 @@ import (
 func main() {
 
 	apiKey := os.Getenv("BHT_APIKEY")
+	if apiKey == "" {
+		log.Fatalln("please export BHT_APIKEY={your api key}")
+	}
+	
 	thesaurus := &thesaurus.BigHuge{APIKey: apiKey}
 	s := bufio.NewScanner(os.Stdin)
 
