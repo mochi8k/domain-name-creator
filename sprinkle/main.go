@@ -32,7 +32,7 @@ func readFile(fileName string) []string {
 
 func main() {
 	// TODO: このファイルからの相対パスにしたい.
-	transforms := readFile("../sprinkle/transforms.txt")
+	transforms := readFile("sprinkle/transforms.txt")
 	rand.Seed(time.Now().UTC().UnixNano())
 	s := bufio.NewScanner(os.Stdin)
 	for s.Scan() {
