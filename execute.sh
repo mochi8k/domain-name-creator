@@ -1,31 +1,39 @@
 #!/bin/bash
 
-echo build domainfinder
-cd ./domainfinder/
-go build -o domainfinder
+if [ ! -e domainfinder/domainfinder ]; then
 
-echo build synonyms
-cd ../synonyms
-go build -o ../domainfinder/lib/synonyms
+  echo building... domainfinder
+  cd ./domainfinder/
+  go build -o domainfinder
 
-echo build available
-cd ../available
-go build -o ../domainfinder/lib/available
+  echo building... synonyms
+  cd ../synonyms
+  go build -o ../domainfinder/lib/synonyms
 
-echo build sprinkle
-cd ../sprinkle
-go build -o ../domainfinder/lib/sprinkle
+  echo building... available
+  cd ../available
+  go build -o ../domainfinder/lib/available
 
-echo build coolify
-cd ../coolify
-go build -o ../domainfinder/lib/coolify
+  echo building... sprinkle
+  cd ../sprinkle
+  go build -o ../domainfinder/lib/sprinkle
 
-echo build domainify
-cd ../domainify
-go build -o ../domainfinder/lib/domainify
+  echo building... coolify
+  cd ../coolify
+  go build -o ../domainfinder/lib/coolify
 
-cd ../
+  echo building... domainify
+  cd ../domainify
+  go build -o ../domainfinder/lib/domainify
 
-echo finish
+  cd ../
 
+  echo
+
+fi
+
+echo Please enter the word.
+echo
+
+# execute binary file
 domainfinder/domainfinder
